@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mojik AI - Where AI Meets Imagination</title>
+
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- ============================================
+         HEADER / NAVIGATION
+         Contains brand logo and social media links
+    ============================================ -->
+    <header class="header" id="header">
+      <div class="header__container">
+        <!-- Brand Logo -->
+        <a href="#" class="header__brand">
+          <span class="header__brand-face">(^‿^)</span>
+          <span class="header__brand-text">mojik ai</span>
+        </a>
+
+        <!-- Social Media Icons -->
+        <nav class="header__social">
+          <a href="#" class="header__social-link" aria-label="Telegram">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+          <a href="#" class="header__social-link" aria-label="Twitter">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+          <a href="#" class="header__social-link" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" class="header__social-link" aria-label="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ============================================
+         HERO SECTION
+         Main landing area with headline and CTA
+    ============================================ -->
+    <section class="hero" id="hero">
+      <!-- Dark Overlay for better text readability -->
+      <div class="hero__overlay"></div>
+
+      <!-- Hero Content Container -->
+      <div class="hero__content">
+        <h1 class="hero__title">
+          Mojik AI brings stories, emotions, and play together — helping kids
+          learn through love and laughter.
+        </h1>
+        <button class="btn btn--primary hero__cta" data-modal="waitlist">
+          Join The Waitlist
+        </button>
+      </div>
+
+      <!-- Bottom Wave Curve -->
+      <div class="hero__curve">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path
+            d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z"
+            fill="#8a4b14"
+          />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ============================================
+         BANNER SECTION
+         Colorful "Where AI Meets Imagination" banner
+    ============================================ -->
+    <section class="banner" id="banner">
+      <!-- Banner Content -->
+      <div class="banner__content">
+        <h2 class="banner__subtitle">WHERE AI MEETS</h2>
+        <h2 class="banner__title">
+          <span class="banner__letter">I</span
+          ><span class="banner__letter banner__letter--red">M</span
+          ><span class="banner__letter banner__letter--green">A</span
+          ><span class="banner__letter banner__letter--blue">G</span
+          ><span class="banner__letter banner__letter--purple">I</span
+          ><span class="banner__letter banner__letter--orange">N</span
+          ><span class="banner__letter banner__letter--yellow">A</span
+          ><span class="banner__letter banner__letter--pink">T</span
+          ><span class="banner__letter banner__letter--sky">I</span
+          ><span class="banner__letter banner__letter--lime">O</span
+          ><span class="banner__letter banner__letter--coral">N</span>
+        </h2>
+      </div>
+
+      <!-- Bottom Wave Curve -->
+      <div class="banner__curve">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path
+            d="M0,40 C480,120 960,0 1440,80 L1440,120 L0,120 Z"
+            fill="#f5e0ff"
+          />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ============================================
+         APP FEATURES SECTION
+         Showcases the Mojik mobile app features
+    ============================================ -->
+    <section class="app-features" id="app-features">
+      <div class="app-features__container">
+        <!-- Text Content -->
+        <div class="app-features__content">
+          <h2 class="app-features__title">
+            STAY CONNECTED AND IN CONTROL WITH THE
+            <span class="app-features__highlight">MOJIK APP</span>
+          </h2>
+
+          <!-- Floating Mascot Image -->
+          <div class="app-features__mascot">
+            <img
+              src="child2.png"
+              alt="Mojik Mascot"
+              class="app-features__mascot-img"
+            />
+          </div>
+
+          <!-- Feature List -->
+          <ul class="app-features__list">
+            <li class="app-features__item">
+              <span class="app-features__icon">📌</span>
+              Track usage and conversations
+            </li>
+            <li class="app-features__item">
+              <span class="app-features__icon">📌</span>
+              Get insights and progress updates
+            </li>
+            <li class="app-features__item">
+              <span class="app-features__icon">📌</span>
+              Add context and special moments
+            </li>
+            <li class="app-features__item">
+              <span class="app-features__icon">📌</span>
+              Personalize your Mojik experience
+            </li>
+            <li class="app-features__item">
+              <span class="app-features__icon">📌</span>
+              Set routines and healthy limits
+            </li>
+          </ul>
+        </div>
+
+        <!-- Phone Mockup -->
+        <div class="app-features__mockup">
+          <img
+            src="viewpoint.png"
+            alt="Mojik App Interface"
+            class="app-features__phone"
+          />
+        </div>
+      </div>
+
+      <!-- Bottom Wave Curve -->
+      <div class="app-features__curve">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path
+            d="M0,80 C480,0 960,120 1440,40 L1440,120 L0,120 Z"
+            fill="#bcd9ff"
+          />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ============================================
+         CTA SECTION (Glassmorphism)
+         Pre-order call-to-action with glass effect
+    ============================================ -->
+    <section class="cta-section" id="cta">
+      <!-- Background Floating Bubbles with Images -->
+      <div class="cta-section__bubbles">
+        <div class="cta-section__bubble cta-section__bubble--left">
+          <img
+            src="child1.png"
+            alt="Happy child learning"
+            class="cta-section__bubble-img"
+          />
+        </div>
+        <div class="cta-section__bubble cta-section__bubble--right">
+          <img
+            src="child2.png"
+            alt="Mojik toy"
+            class="cta-section__bubble-img"
+          />
+        </div>
+      </div>
+
+      <!-- Glassmorphism Card -->
+      <div class="cta-section__card">
+        <h2 class="cta-section__title">
+          PRE-ORDER MOJIK AND HELP YOUR CHILD LEARN, GROW, AND DREAM
+        </h2>
+        <button
+          class="btn btn--secondary cta-section__btn"
+          data-modal="waitlist"
+        >
+          Join The Waitlist
+        </button>
+      </div>
+
+      <!-- Bottom Wave Curve -->
+      <div class="cta-section__curve">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path
+            d="M0,60 C360,0 1080,120 1440,60 L1440,120 L0,120 Z"
+            fill="#1a1a2e"
+          />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         Contains brand, copyright, and social links
+    ============================================ -->
+    <footer class="footer" id="footer">
+      <div class="footer__container">
+        <!-- Footer Brand -->
+        <div class="footer__brand">
+          <a href="#" class="footer__logo">
+            <span class="footer__logo-face">(^‿^)</span>
+            <span class="footer__logo-text">mojik ai</span>
+          </a>
+          <p class="footer__copyright">Mojik AI 2025 © All Rights Reserved</p>
+        </div>
+
+        <!-- Footer Navigation -->
+        <nav class="footer__nav">
+          <a href="#" class="footer__link">Privacy Policy</a>
+          <a href="#" class="footer__link">Terms of Service</a>
+          <a href="#" class="footer__link">Contact Us</a>
+        </nav>
+
+        <!-- Footer Social Icons -->
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Telegram">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Twitter">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Back to Top Button -->
+      <button
+        class="footer__back-to-top"
+        id="backToTop"
+        aria-label="Back to top"
+      >
+        <i class="fa-solid fa-chevron-up"></i>
+      </button>
+    </footer>
+
+    <!-- ============================================
+         WAITLIST MODAL
+         Popup form for email collection
+    ============================================ -->
+    <div class="modal" id="waitlistModal">
+      <div class="modal__overlay"></div>
+      <div class="modal__content">
+        <button class="modal__close" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="modal__header">
+          <span class="modal__icon">(^‿^)</span>
+          <h3 class="modal__title">Join The Mojik Family!</h3>
+          <p class="modal__subtitle">Be the first to know when we launch</p>
+        </div>
+        <form class="modal__form" id="waitlistForm">
+          <div class="modal__field">
+            <input
+              type="text"
+              class="modal__input"
+              placeholder="Your Name"
+              required
+            />
+          </div>
+          <div class="modal__field">
+            <input
+              type="email"
+              class="modal__input"
+              placeholder="Your Email"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn--primary modal__submit">
+            Count Me In!
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
