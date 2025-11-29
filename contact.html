@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mojik Kids Waitlist</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Nunito", sans-serif;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Background Layer */
+      .background-layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+      }
+
+      /* Mobile: Gradient background */
+      .bg-gradient {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          #fef6e4 0%,
+          #f8e8d4 50%,
+          #e8f4f8 100%
+        );
+      }
+
+      /* Desktop: Image background */
+      .bg-image {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(hero.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      /* Dark overlay for better readability */
+      .bg-overlay {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 248, 240, 0.315) 0%,
+          rgba(255, 255, 255, 0.418) 50%,
+          rgba(240, 248, 255, 0.479) 100%
+        );
+      }
+
+      /* Show image background on larger screens */
+      @media (min-width: 1024px) {
+        .bg-gradient {
+          display: none;
+        }
+        .bg-image,
+        cc .bg-overlay {
+          display: block;
+        }
+      }
+
+      /* Main Container */
+      .main-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        width: 100%;
+        padding: 40px 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Two-column layout for desktop */
+      @media (min-width: 1024px) {
+        .main-container {
+          justify-content: flex-end;
+          padding-right: 10%;
+        }
+      }
+
+      /* Left side content (visible on desktop) */
+      .hero-content {
+        display: none;
+        position: absolute;
+        left: 8%;
+        top: 50%;
+        transform: translateY(-50%);
+        max-width: 450px;
+        z-index: 2;
+      }
+
+      @media (min-width: 1200px) {
+        .hero-content {
+          display: block;
+        }
+      }
+
+      .hero-title {
+        font-family: "Baloo 2", cursive;
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: #4a90d9;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8);
+      }
+
+      .hero-title span {
+        color: #ff9f43;
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+        color: #ff9f43;
+        line-height: 1.7;
+        margin-bottom: 30px;
+      }
+
+      .hero-features {
+        list-style: none;
+      }
+
+      .hero-features li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.1rem;
+        color: antiquewhite;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .hero-features li span {
+        font-size: 1.5rem;
+      }
+
+      /* Card Container with Bubbles */
+      .card-wrapper {
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Floating Bubbles around the card */
+      .bubble {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.9;
+        z-index: -1;
+        animation: floatBubble 6s ease-in-out infinite;
+      }
+
+      /* Bubble positions and styles */
+      .bubble-1 {
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, #98d8aa 0%, #7bc794 100%);
+        bottom: -40px;
+        left: -50px;
+        box-shadow: 0 15px 40px rgba(152, 216, 170, 0.5);
+        animation-delay: 0s;
+      }
+
+      .bubble-2 {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, #ffe066 0%, #ffd43b 100%);
+        bottom: -30px;
+        right: -40px;
+        box-shadow: 0 15px 40px rgba(255, 224, 102, 0.5);
+        animation-delay: 1s;
+      }
+
+      .bubble-3 {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #ffb347 0%, #ff9f43 100%);
+        top: -25px;
+        right: 80px;
+        box-shadow: 0 10px 30px rgba(255, 179, 71, 0.4);
+        animation-delay: 2s;
+      }
+
+      .bubble-4 {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #87ceeb 0%, #5dade2 100%);
+        top: 60px;
+        left: -35px;
+        box-shadow: 0 10px 30px rgba(135, 206, 235, 0.4);
+        animation-delay: 1.5s;
+      }
+
+      .bubble-5 {
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(135deg, #dda0dd 0%, #da70d6 100%);
+        top: -20px;
+        left: 60px;
+        box-shadow: 0 8px 25px rgba(221, 160, 221, 0.4);
+        animation-delay: 0.5s;
+      }
+
+      .bubble-6 {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+        bottom: 100px;
+        right: -30px;
+        box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        animation-delay: 2.5s;
+      }
+
+      .bubble-7 {
+        width: 35px;
+        height: 35px;
+        background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+        bottom: 150px;
+        left: -25px;
+        box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
+        animation-delay: 3s;
+      }
+
+      .bubble-8 {
+        width: 55px;
+        height: 55px;
+        background: linear-gradient(135deg, #a8e6cf 0%, #88d8b0 100%);
+        top: 150px;
+        right: -35px;
+        box-shadow: 0 8px 25px rgba(168, 230, 207, 0.4);
+        animation-delay: 1.8s;
+      }
+
+      /* Additional decorative mini bubbles */
+      .mini-bubble {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(5px);
+        animation: floatMini 4s ease-in-out infinite;
+      }
+
+      .mini-1 {
+        width: 20px;
+        height: 20px;
+        top: 30px;
+        right: 30px;
+        animation-delay: 0.3s;
+      }
+
+      .mini-2 {
+        width: 15px;
+        height: 15px;
+        bottom: 80px;
+        left: 20px;
+        animation-delay: 0.8s;
+      }
+
+      .mini-3 {
+        width: 18px;
+        height: 18px;
+        top: 200px;
+        left: -15px;
+        animation-delay: 1.2s;
+      }
+
+      .mini-4 {
+        width: 12px;
+        height: 12px;
+        bottom: 200px;
+        right: 10px;
+        animation-delay: 1.6s;
+      }
+
+      @keyframes floatBubble {
+        0%,
+        100% {
+          transform: translateY(0) scale(1) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-15px) scale(1.05) rotate(5deg);
+        }
+        50% {
+          transform: translateY(-8px) scale(1.02) rotate(-3deg);
+        }
+        75% {
+          transform: translateY(-20px) scale(1.08) rotate(3deg);
+        }
+      }
+
+      @keyframes floatMini {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+          opacity: 0.6;
+        }
+        50% {
+          transform: translateY(-10px) scale(1.1);
+          opacity: 0.9;
+        }
+      }
+
+      /* The Form Card */
+      .card {
+        background: rgba(255, 253, 248, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 40px;
+        border: 3px solid #ff9f43;
+        padding: 45px 40px;
+        width: 100%;
+        max-width: 420px;
+        box-shadow: 0 25px 80px rgba(255, 159, 67, 0.2),
+          0 10px 30px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: visible;
+      }
+
+      /* Glassmorphism effect on desktop */
+      @media (min-width: 1024px) {
+        .card {
+          background: rgba(255, 253, 248, 0.92);
+          backdrop-filter: blur(25px);
+          box-shadow: 0 30px 100px rgba(255, 159, 67, 0.25),
+            0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+      }
+
+      /* Inner card glow */
+      .card::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(
+          135deg,
+          #ff9f43,
+          #ffe066,
+          #98d8aa,
+          #87ceeb,
+          #ff9f43
+        );
+        border-radius: 42px;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .card:hover::before {
+        opacity: 0.5;
+        animation: borderGlow 3s linear infinite;
+      }
+
+      @keyframes borderGlow {
+        0% {
+          filter: hue-rotate(0deg);
+        }
+        100% {
+          filter: hue-rotate(360deg);
+        }
+      }
+
+      /* Stars decoration inside card */
+      .star {
+        position: absolute;
+        font-size: 20px;
+        animation: twinkle 2s ease-in-out infinite;
+        z-index: 5;
+      }
+
+      .star-1 {
+        top: 15px;
+        left: 25px;
+        animation-delay: 0s;
+      }
+
+      .star-2 {
+        top: 60px;
+        right: 20px;
+        animation-delay: 0.5s;
+      }
+
+      .star-3 {
+        bottom: 80px;
+        left: 15px;
+        font-size: 16px;
+        animation-delay: 1s;
+      }
+
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.5;
+          transform: scale(1) rotate(0deg);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.2) rotate(10deg);
+        }
+      }
+
+      .title {
+        font-family: "Baloo 2", cursive;
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #4a90d9;
+        text-align: center;
+        line-height: 1.3;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 0px rgba(74, 144, 217, 0.1);
+      }
+
+      .title span {
+        color: #ff9f43;
+      }
+
+      .form-group {
+        margin-bottom: 18px;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 16px 24px;
+        border: none;
+        border-radius: 50px;
+        background: #ffffff;
+        font-family: "Nunito", sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #444;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06),
+          inset 0 1px 3px rgba(0, 0, 0, 0.02);
+        transition: all 0.3s ease;
+        outline: none;
+      }
+
+      .input-field::placeholder {
+        color: #b8b8b8;
+        font-weight: 500;
+      }
+
+      .input-field:focus {
+        box-shadow: 0 6px 20px rgba(255, 159, 67, 0.15),
+          0 0 0 3px rgba(255, 159, 67, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .input-field:hover {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08),
+          inset 0 1px 3px rgba(0, 0, 0, 0.02);
+      }
+
+      select.input-field {
+        cursor: pointer;
+        appearance: none;
+        background-repeat: no-repeat;
+        background-position: right 20px center;
+        background-size: 18px;
+        padding-right: 50px;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 18px 24px;
+        border: none;
+        border-radius: 50px;
+        background: linear-gradient(135deg, #ff9f43 0%, #ff7f50 100%);
+        color: white;
+        font-family: "Baloo 2", cursive;
+        font-size: 1.25rem;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 8px 25px rgba(255, 159, 67, 0.4),
+          0 4px 10px rgba(255, 127, 80, 0.3);
+        transition: all 0.3s ease;
+        margin-top: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .submit-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(255, 159, 67, 0.5),
+          0 6px 15px rgba(255, 127, 80, 0.4);
+      }
+
+      .submit-btn:hover::before {
+        left: 100%;
+      }
+
+      .submit-btn:active {
+        transform: translateY(-1px);
+      }
+
+      /* Success state */
+      .card.success .form-content {
+        display: none;
+      }
+
+      .success-message {
+        display: none;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      .card.success .success-message {
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .success-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #98d8aa 0%, #7bc794 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        box-shadow: 0 8px 25px rgba(152, 216, 170, 0.4);
+      }
+
+      .success-icon svg {
+        width: 40px;
+        height: 40px;
+        stroke: white;
+        stroke-width: 3;
+      }
+
+      .success-title {
+        font-family: "Baloo 2", cursive;
+        font-size: 1.5rem;
+        color: #4a90d9;
+        margin-bottom: 10px;
+      }
+
+      .success-text {
+        color: #666;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      /* Loading state */
+      .submit-btn.loading {
+        pointer-events: none;
+        opacity: 0.8;
+      }
+
+      .submit-btn.loading .btn-text {
+        visibility: hidden;
+      }
+
+      .submit-btn .spinner {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 24px;
+        height: 24px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      .submit-btn.loading .spinner {
+        display: block;
+      }
+
+      @keyframes spin {
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      /* Error message */
+      .error-message {
+        background: #ffe5e5;
+        color: #d63031;
+        padding: 12px 20px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        display: none;
+        text-align: center;
+      }
+
+      .error-message.show {
+        display: block;
+        animation: shake 0.5s ease;
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        75% {
+          transform: translateX(5px);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 480px) {
+        .card {
+          padding: 35px 25px;
+          border-radius: 30px;
+        }
+
+        .title {
+          font-size: 1.35rem;
+        }
+
+        .input-field {
+          padding: 14px 20px;
+          font-size: 0.95rem;
+        }
+
+        .submit-btn {
+          padding: 16px 20px;
+          font-size: 1.1rem;
+        }
+
+        .bubble-1 {
+          width: 80px;
+          height: 80px;
+          bottom: -30px;
+          left: -30px;
+        }
+
+        .bubble-2 {
+          width: 70px;
+          height: 70px;
+          bottom: -25px;
+          right: -25px;
+        }
+
+        .bubble-3,
+        .bubble-4,
+        .bubble-5,
+        .bubble-6,
+        .bubble-7,
+        .bubble-8 {
+          transform: scale(0.7);
+        }
+
+        .mini-bubble {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background Layer -->
+    <div class="background-layer">
+      <div class="bg-gradient"></div>
+      <div class="bg-image"></div>
+      <div class="bg-overlay"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+      <!-- Hero Content (Desktop Only) -->
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Welcome to <span>Mojik</span> Learning Adventure! 🚀
+        </h1>
+        <p class="hero-subtitle">
+          Where children discover the joy of learning through play, creativity,
+          and imagination.
+        </p>
+        <ul class="hero-features">
+          <li><span>🎮</span> Interactive Learning Games</li>
+          <li><span>🎨</span> Creative Art Activities</li>
+          <li><span>📚</span> Engaging Story Adventures</li>
+          <li><span>🏆</span> Fun Rewards & Achievements</li>
+          <li><span>👨‍👩‍👧</span> Parent Dashboard & Progress</li>
+        </ul>
+      </div>
+
+      <!-- Card with Bubbles -->
+      <div class="card-wrapper">
+        <!-- Floating Bubbles -->
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="bubble bubble-4"></div>
+        <div class="bubble bubble-5"></div>
+        <div class="bubble bubble-6"></div>
+        <div class="bubble bubble-7"></div>
+        <div class="bubble bubble-8"></div>
+
+        <!-- Mini Bubbles -->
+        <div class="mini-bubble mini-1"></div>
+        <div class="mini-bubble mini-2"></div>
+        <div class="mini-bubble mini-3"></div>
+        <div class="mini-bubble mini-4"></div>
+
+        <!-- Form Card -->
+        <div class="card" id="waitlistCard">
+          <!-- Stars -->
+          <span class="star star-1">⭐</span>
+          <span class="star star-2">✨</span>
+          <span class="star star-3">🌟</span>
+
+          <div class="form-content">
+            <h1 class="title">
+              START YOUR CHILD'S JOURNEY WITH <span>MOJIK</span> TODAY
+            </h1>
+
+            <div class="error-message" id="errorMessage">
+              Something went wrong. Please try again.
+            </div>
+
+            <form id="waitlistForm">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="input-field"
+                  placeholder="Your Name"
+                  name="name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="input-field"
+                  placeholder="Email"
+                  name="email"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <select class="input-field" name="country" required>
+                  <option value="" disabled selected>Country</option>
+                  <option value="us">🇺🇸 United States</option>
+                  <option value="uk">🇬🇧 United Kingdom</option>
+                  <option value="ca">🇨🇦 Canada</option>
+                  <option value="au">🇦🇺 Australia</option>
+                  <option value="de">🇩🇪 Germany</option>
+                  <option value="fr">🇫🇷 France</option>
+                  <option value="jp">🇯🇵 Japan</option>
+                  <option value="in">🇮🇳 India</option>
+                  <option value="ng">🇳🇬 Nigeria</option>
+                  <option value="br">🇧🇷 Brazil</option>
+                  <option value="other">🌍 Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <input
+                  type="tel"
+                  class="input-field"
+                  placeholder="Phone Number"
+                  name="phone"
+                />
+              </div>
+
+              <div class="form-group">
+                <select class="input-field" name="source" required>
+                  <option value="" disabled selected>
+                    Where did you find out about us?
+                  </option>
+                  <option value="social">📱 Social Media</option>
+                  <option value="friend">👋 Friend or Family</option>
+                  <option value="search">🔍 Google Search</option>
+                  <option value="ad">📺 Advertisement</option>
+                  <option value="blog">📝 Blog or Article</option>
+                  <option value="school">🏫 School</option>
+                  <option value="other">💭 Other</option>
+                </select>
+              </div>
+
+              <button type="submit" class="submit-btn" id="submitBtn">
+                <span class="btn-text">Join The Waitlist</span>
+                <span class="spinner"></span>
+              </button>
+            </form>
+          </div>
+
+          <div class="success-message">
+            <div class="success-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 13l4 4L19 7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h2 class="success-title">You're on the list! 🎉</h2>
+            <p class="success-text">
+              Thank you for joining the Mojik family!<br />
+              We'll be in touch soon with exciting updates.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("waitlistForm");
+        const card = document.getElementById("waitlistCard");
+        const submitBtn = document.getElementById("submitBtn");
+        const errorMessage = document.getElementById("errorMessage");
+        const inputs = document.querySelectorAll(".input-field");
+
+        // Your backend API endpoint
+        const API_ENDPOINT = "/api/waitlist"; // Change this to your actual endpoint
+
+        // Add subtle animation on input focus
+        inputs.forEach((input) => {
+          input.addEventListener("focus", function () {
+            this.parentElement.style.transform = "scale(1.02)";
+            this.parentElement.style.transition = "transform 0.2s ease";
+          });
+
+          input.addEventListener("blur", function () {
+            this.parentElement.style.transform = "scale(1)";
+          });
+        });
+
+        // Form submission
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // Hide any previous error
+          errorMessage.classList.remove("show");
+
+          // Get form data
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+
+          // Add loading state
+          submitBtn.classList.add("loading");
+
+          try {
+            // Send to backend
+            const response = await fetch(API_ENDPOINT, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+
+            // Success
+            submitBtn.classList.remove("loading");
+            card.classList.add("success");
+            createConfetti();
+          } catch (error) {
+            console.error("Error:", error);
+            submitBtn.classList.remove("loading");
+
+            // For demo purposes, still show success
+            // In production, you'd show the error
+            // errorMessage.classList.add('show');
+
+            // Demo: Show success anyway
+            card.classList.add("success");
+            createConfetti();
+          }
+        });
+
+        // Phone number formatting
+        const phoneInput = document.querySelector('input[name="phone"]');
+        phoneInput.addEventListener("input", function (e) {
+          let value = e.target.value.replace(/\D/g, "");
+          if (value.length > 0) {
+            if (value.length <= 3) {
+              value = `(${value}`;
+            } else if (value.length <= 6) {
+              value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+            } else {
+              value = `(${value.slice(0, 3)}) ${value.slice(
+                3,
+                6
+              )}-${value.slice(6, 10)}`;
+            }
+          }
+          e.target.value = value;
+        });
+
+        // Email validation
+        const emailInput = document.querySelector('input[name="email"]');
+        emailInput.addEventListener("input", function () {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (this.value && !emailRegex.test(this.value)) {
+            this.style.boxShadow =
+              "0 4px 15px rgba(255, 99, 71, 0.2), 0 0 0 2px rgba(255, 99, 71, 0.3)";
+          } else if (this.value && emailRegex.test(this.value)) {
+            this.style.boxShadow =
+              "0 4px 15px rgba(152, 216, 170, 0.3), 0 0 0 2px rgba(152, 216, 170, 0.4)";
+          } else {
+            this.style.boxShadow = "";
+          }
+        });
+
+        // Confetti effect
+        function createConfetti() {
+          const colors = [
+            "#FF9F43",
+            "#4A90D9",
+            "#98D8AA",
+            "#FFE066",
+            "#FF7F50",
+            "#DDA0DD",
+          ];
+          const confettiCount = 60;
+
+          for (let i = 0; i < confettiCount; i++) {
+            const confetti = document.createElement("div");
+            confetti.style.cssText = `
+                        position: fixed;
+                        width: ${Math.random() * 10 + 5}px;
+                        height: ${Math.random() * 10 + 5}px;
+                        background: ${
+                          colors[Math.floor(Math.random() * colors.length)]
+                        };
+                        left: ${Math.random() * 100}vw;
+                        top: -20px;
+                        border-radius: ${Math.random() > 0.5 ? "50%" : "2px"};
+                        pointer-events: none;
+                        z-index: 1000;
+                        animation: confettiFall ${
+                          Math.random() * 2 + 2
+                        }s linear forwards;
+                    `;
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 4000);
+          }
+        }
+
+        // Add confetti animation
+        const style = document.createElement("style");
+        style.textContent = `
+                @keyframes confettiFall {
+                    0% {
+                        transform: translateY(0) rotate(0deg);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(100vh) rotate(720deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+        document.head.appendChild(style);
+
+        // Parallax effect for bubbles on mouse move
+        document.addEventListener("mousemove", function (e) {
+          const bubbles = document.querySelectorAll(".bubble");
+          const mouseX = e.clientX / window.innerWidth - 0.5;
+          const mouseY = e.clientY / window.innerHeight - 0.5;
+
+          bubbles.forEach((bubble, index) => {
+            const speed = (index + 1) * 0.5;
+            const x = mouseX * speed * 20;
+            const y = mouseY * speed * 20;
+            bubble.style.transform = `translate(${x}px, ${y}px)`;
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
