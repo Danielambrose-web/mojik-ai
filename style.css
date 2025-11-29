@@ -645,7 +645,7 @@ button {
    ============================================ */
 .footer {
   position: relative;
-  background: var(--color-bg-dark);
+  background: var(--color-bg-gold);
   padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-lg);
 }
 

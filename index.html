@@ -65,8 +65,9 @@
           Mojik AI brings stories, emotions, and play together — helping kids
           learn through love and laughter.
         </h1>
-        <button class="btn btn--primary hero__cta" data-modal="waitlist">
-          Join The Waitlist
+        <button class="btn btn--primary hero__cta">
+          <!-- data-modal="waitlist" i remove it to use a cstomized page instead -->
+          <a href="contact.html">Join The Waitlist</a>
         </button>
       </div>
 
@@ -211,11 +212,9 @@
         <h2 class="cta-section__title">
           PRE-ORDER MOJIK AND HELP YOUR CHILD LEARN, GROW, AND DREAM
         </h2>
-        <button
-          class="btn btn--secondary cta-section__btn"
-          data-modal="waitlist"
-        >
-          Join The Waitlist
+        <button class="btn btn--secondary cta-section__btn">
+          <!-- data-modal="waitlist" i remove it to use a cstomized page instead -->
+          <a href="contact.html"> Join The Waitlist</a>
         </button>
       </div>
 
@@ -224,7 +223,7 @@
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
           <path
             d="M0,60 C360,0 1080,120 1440,60 L1440,120 L0,120 Z"
-            fill="#1a1a2e"
+            fill="#fccf80"
           />
         </svg>
       </div>
@@ -283,7 +282,7 @@
          WAITLIST MODAL
          Popup form for email collection
     ============================================ -->
-    <div class="modal" id="waitlistModal">
+    <!-- <div class="modal" id="waitlistModal">
       <div class="modal__overlay"></div>
       <div class="modal__content">
         <button class="modal__close" aria-label="Close modal">
@@ -316,7 +315,7 @@
           </button>
         </form>
       </div>
-    </div>
+    </div> -->
 
     <!-- Main JavaScript -->
     <script src="script.js"></script>
